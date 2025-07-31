@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -16,16 +17,6 @@ public class ApplicationController {
     public String home(Model model) {
         model.addAttribute("name", "Alessandro Falco");
         return "home";
-    }
-
-    @GetMapping("/movies")
-    public String movie(Model model) {
-        return "movies";
-    }
-
-    @GetMapping("/songs")
-    public String song(Model model) {
-        return "songs";
     }
 
     private List<Movie> getBestMovies() {
@@ -42,5 +33,59 @@ public class ApplicationController {
         songs.add(new Song("What a wonderful world", 2));
 
         return songs;
+    }
+
+    @GetMapping("/movies")
+    public String movie(Model model) {
+        List<Movie> movies = getBestMovies();
+        String movieTitles = "";
+        for (Movie m : movies) {
+            if (!movieTitles.isEmpty())
+                movieTitles += ", ";
+            movieTitles += m.getTitle();
+        }
+        model.addAttribute("titles", movieTitles);
+        return "movies";
+    }
+
+    @GetMapping("/songs")
+    public String song(Model model) {
+        List<Song> songs = getBestSongs();
+        String songTitles = "";
+        for (Song s : songs) {
+            if (!songTitles.isEmpty())
+                songTitles += ", ";
+            songTitles += s.getTitle();
+        }
+        model.addAttribute("titles", songTitles);
+        return "songs";
+    }
+
+    @GetMapping("/movies/{id}")
+    public String movieById(@PathVariable int id, Model model) {
+        List<Movie> movies = getBestMovies();
+        String title = "Film non trovato";
+        for (Movie m : movies) {
+            if (m.getId() == id) {
+                title = m.getTitle();
+                break;
+            }
+        }
+        model.addAttribute("title", title);
+        return "movie";
+    }
+
+    @GetMapping("/songs/{id}")
+    public String songById(@PathVariable int id, Model model) {
+        List<Song> songs = getBestSongs();
+        String title = "Canzone non trovata";
+        for (Song s : songs) {
+            if (s.getId() == id) {
+                title = s.getTitle();
+                break;
+            }
+        }
+        model.addAttribute("title", title);
+        return "song";
     }
 }
