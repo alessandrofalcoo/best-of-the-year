@@ -38,11 +38,10 @@ public class ApplicationController {
     @GetMapping("/movies")
     public String movie(Model model) {
         List<Movie> movies = getBestMovies();
-        String movieTitles = "";
+        List<String> movieTitles = new ArrayList<>();
         for (Movie m : movies) {
-            if (!movieTitles.isEmpty())
-                movieTitles += ", ";
-            movieTitles += m.getTitle();
+            movieTitles.add(m.getTitle());
+
         }
         model.addAttribute("titles", movieTitles);
         return "movies";
@@ -51,11 +50,9 @@ public class ApplicationController {
     @GetMapping("/songs")
     public String song(Model model) {
         List<Song> songs = getBestSongs();
-        String songTitles = "";
+        List<String> songTitles = new ArrayList<>();
         for (Song s : songs) {
-            if (!songTitles.isEmpty())
-                songTitles += ", ";
-            songTitles += s.getTitle();
+            songTitles.add(s.getTitle());
         }
         model.addAttribute("titles", songTitles);
         return "songs";

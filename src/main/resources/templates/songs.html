@@ -12,7 +12,7 @@
     <main>
         <ul>
             <h3>Best Songs</h3>
-            <li th:text="${titles}"></li>
+            <li th:each="title : ${titles}" th:text="${title}"></li>
         </ul>
     </main>
     <footer></footer>

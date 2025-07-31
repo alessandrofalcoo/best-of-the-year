@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html xmlns="http://www.thymeleaf.org">
 
 <head>
@@ -11,7 +12,7 @@
     <main>
         <ul>
             <h3>Best Movies</h3>
-            <li th:text="${titles}"></li>
+            <li th:each="title : ${titles}" th:text="${title}"></li>
         </ul>
     </main>
     <footer></footer>
