@@ -12,10 +12,13 @@
         <th:block th:replace="fragments/nav :: nav"></th:block>
     </header>
     <main>
-        <ul>
-            <h3>Best Songs</h3>
-            <li th:each="title : ${titles}" th:text="${title}"></li>
-        </ul>
+        <div class="song-list d-f justify-content-center text-center">
+            <ul>
+                <h3>Best Songs</h3>
+                <li th:each="title : ${titles}" th:text="${title}"></li>
+            </ul>
+
+        </div>
     </main>
     <footer></footer>
 </body>

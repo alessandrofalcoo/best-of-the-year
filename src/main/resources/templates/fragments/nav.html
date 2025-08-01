@@ -4,13 +4,16 @@
 <body>
     <th:block th:fragment="nav">
         <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom mb-4 p-4">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#">Best of</a>
-                <div>
-                    <div class="btn-group" role="group">
-                        <a class="btn btn-outline-primary" href="/movies">Movies</a>
-                        <a class="btn btn-outline-primary" href="/songs">Songs</a>
-                    </div>
+            <div class="container-fluid d-flex align-items-center">
+                <!-- Titolo -->
+                <a class="navbar-brand me-4" href="#">Best of</a>
+
+                <!-- Bottoni subito dopo il titolo -->
+                <div class="btn-group" role="group">
+                    <a class="btn btn-outline-primary text-dark border-dark rounded-3 mx-2 p-2 px-4"
+                        href="/movies">Movies</a>
+                    <a class="btn btn-outline-primary text-dark border-dark rounded-3 mx-2 p-2 px-4"
+                        href="/songs">Songs</a>
                 </div>
             </div>
         </nav>

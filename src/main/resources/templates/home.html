@@ -8,8 +8,14 @@
 </head>
 
 <body>
-    <th:block th:replace="fragments/nav :: nav"></th:block>
-    <h1>Best of by <span th:text="${name}"></span></h1>
+    <header>
+        <th:block th:replace="fragments/nav :: nav"></th:block>
+
+    </header>
+    <main>
+        <h1 class="px-4 py-3 d-flex justify-content-center">Best of by <span th:text="${name}" class="px-3"></span></h1>
+
+    </main>
 </body>
 
 </html>
